@@ -68,10 +68,11 @@ button:focus {
   
   /* Hero section adjustments */
   .hero-title {
-    font-size: clamp(24px, 6vw, 36px) !important;
+    font-size: clamp(20px, 5.5vw, 32px) !important;
     padding-left: 20px !important;
     padding-right: 20px !important;
-    white-space: nowrap !important;
+    line-height: 1.2 !important;
+    word-break: break-word !important;
   }
   
   .hero-subtitle {
