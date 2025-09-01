@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run dev:*)",
+      "Read(c:\\Users\\ariro\\OneDrive\\Pictures\\Screenshots 1/**)",
+      "Read(c:\\Users\\ariro\\OneDrive\\Pictures\\Screenshots 1/**)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

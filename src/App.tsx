@@ -11,7 +11,10 @@ function App() {
               src="/logo.png" 
               alt="Arclight Intelligence" 
               className="h-12 w-auto"
-              style={{width: '160px'}}
+              style={{
+                width: '160px',
+                clipPath: 'inset(8px 8px 8px 8px)'
+              }}
             />
           </div>
           <div>
@@ -77,7 +80,14 @@ function App() {
           >
             OUR EXPERTISE
           </h2>
-          <div className="grid md:grid-cols-3 gap-8">
+          <div 
+            style={{
+              display: 'flex',
+              flexDirection: 'row',
+              flexWrap: 'wrap',
+              gap: '2rem'
+            }}
+          >
             {/* PE/VC Advisory */}
             <div 
               className="text-center hover:shadow-lg transition-shadow duration-300 expertise-card" 
@@ -86,13 +96,13 @@ function App() {
                 borderRadius: '8px',
                 padding: '40px 30px',
                 minHeight: '220px',
-                backgroundColor: 'transparent'
+                backgroundColor: 'transparent',
+                flex: '1',
+                minWidth: '300px'
               }}
             >
               <div className="w-15 h-15 mx-auto mb-6 flex items-center justify-center">
-                <svg className="w-15 h-15 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{width: '60px', height: '60px'}}>
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2-2v2m8 0V6a2 2 0 012 2v6a2 2 0 01-2 2H6a2 2 0 01-2-2V8a2 2 0 012-2V6" />
-                </svg>
+                <img src="/torch.png" alt="PE/VC Advisory" style={{width: '120px', height: '120px'}} />
               </div>
               <h3 
                 className="text-black mb-3"
@@ -124,13 +134,13 @@ function App() {
                 borderRadius: '8px',
                 padding: '40px 30px',
                 minHeight: '220px',
-                backgroundColor: 'transparent'
+                backgroundColor: 'transparent',
+                flex: '1',
+                minWidth: '300px'
               }}
             >
               <div className="w-15 h-15 mx-auto mb-6 flex items-center justify-center">
-                <svg className="w-15 h-15 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{width: '60px', height: '60px'}}>
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                </svg>
+                <img src="/match.png" alt="Startup Strategy" style={{width: '120px', height: '120px'}} />
               </div>
               <h3 
                 className="text-black mb-3"
@@ -162,14 +172,13 @@ function App() {
                 borderRadius: '8px',
                 padding: '40px 30px',
                 minHeight: '220px',
-                backgroundColor: 'transparent'
+                backgroundColor: 'transparent',
+                flex: '1',
+                minWidth: '300px'
               }}
             >
               <div className="w-15 h-15 mx-auto mb-6 flex items-center justify-center">
-                <svg className="w-15 h-15 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{width: '60px', height: '60px'}}>
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                </svg>
+                <img src="/fluro_bulb.png" alt="Healthcare AI/Data" style={{width: '120px', height: '120px'}} />
               </div>
               <h3 
                 className="text-black mb-3"
@@ -211,10 +220,8 @@ function App() {
                 backgroundColor: 'transparent'
               }}
             >
-              <div className="w-15 h-15 rounded-full mx-auto mb-6 flex items-center justify-center" style={{width: '60px', height: '60px', backgroundColor: '#D4C5B9'}}>
-                <svg className="w-8 h-8 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                </svg>
+              <div className="w-15 h-15 mx-auto mb-6 flex items-center justify-center">
+                <img src="/lighthouse.png" alt="About Us" style={{width: '120px', height: '120px'}} />
               </div>
               <h2 
                 className="text-black mb-5"
@@ -251,12 +258,6 @@ function App() {
       >
         <div className="flex justify-between items-end max-w-[1440px] mx-auto footer-container">
           <div className="flex flex-col">
-            <img 
-              src="/logo.png" 
-              alt="Arclight Intelligence" 
-              className="h-auto mb-4"
-              style={{width: '140px'}}
-            />
             <p 
               className="text-left"
               style={{
