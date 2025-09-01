@@ -48,7 +48,7 @@ function App() {
               letterSpacing: '-0.02em'
             }}
           >
-            ILLUMINATE THE PATH FORWARD
+            ILLUMINATE YOUR PATH TO HEALTHCARE INNOVATION
           </h1>
           <p 
             className="mb-10 max-w-3xl mx-auto leading-relaxed hero-subtitle"
@@ -58,7 +58,7 @@ function App() {
               color: '#444'
             }}
           >
-            Bespoke Consulting for Healthcare Innovation
+            Expert guidance at the intersection of healthcare operations, data analytics, and emerging technology
           </p>
         </div>
       </section>
@@ -118,7 +118,7 @@ function App() {
                   color: '#666'
                 }}
               >
-                Navigate healthcare investments with confidence. We provide deep operational insights, due diligence expertise, and strategic assessment of healthcare technology companies.
+                Navigate healthcare investments with confidence. We provide deep operational insights, due diligence expertise, and strategic assessment of healthcare technology companies, leveraging 20+ years of experience leading analytics and innovation at Fortune 100 health systems.
               </p>
             </div>
 
@@ -156,7 +156,7 @@ function App() {
                   color: '#666'
                 }}
               >
-                Transform your vision into market reality. From product-market fit to go-to-market strategy, we help healthtech startups navigate complex healthcare ecosystems.
+                Transform your vision into market reality. From product-market fit to go-to-market strategy, we help healthtech startups navigate complex healthcare ecosystems, RFP processes, and enterprise sales cycles with proven frameworks that have driven $100M+ implementations.
               </p>
             </div>
 
@@ -194,7 +194,7 @@ function App() {
                   color: '#666'
                 }}
               >
-                Turn data into competitive advantage. We guide healthcare organizations through AI adoption, analytics transformation, and data strategy development.
+                Turn data into competitive advantage. We guide healthcare organizations through AI adoption, analytics transformation, and data strategy development—from building centers of excellence to deploying production-ready ML models that improve outcomes and reduce costs.
               </p>
             </div>
           </div>
@@ -219,7 +219,7 @@ function App() {
               >
                 ABOUT US
               </h2>
-              <p 
+              <div 
                 className="leading-relaxed"
                 style={{
                   fontSize: '14px',
@@ -227,8 +227,12 @@ function App() {
                   color: '#666'
                 }}
               >
-                Arclight Intelligence brings clarity to healthcare's most complex challenges. Founded by Dr. Ari Robicsek, a healthcare executive who has led analytics and research operations at one of America's largest health systems, Arclight Intelligence bridges the gap between innovation and implementation. With a track record of building high-performing analytics teams, developing FDA-cleared AI products, securing $35M+ in research funding, and generating $50M+ in operational savings, we understand what it takes to create lasting value in healthcare.
-              </p>
+                <p className="mb-4">Arclight Intelligence brings clarity to healthcare's most complex challenges.</p>
+                <p className="mb-4">Founded by Dr. Ari Robicsek, a healthcare executive who has led analytics and research operations at one of America's largest health systems, Arclight Intelligence bridges the gap between innovation and implementation.</p>
+                <p className="mb-4">With a track record of building high-performing analytics teams, developing FDA-cleared AI products, securing $35M+ in research funding, and generating $50M+ in operational savings, we understand what it takes to create lasting value in healthcare.</p>
+                <p className="mb-4">Our expertise spans the entire healthcare innovation lifecycle—from evaluating early-stage technologies to scaling enterprise-wide implementations. We've published in Nature and JAMA, built products used by thousands of clinicians, and helped shape the future of healthcare AI.</p>
+                <p>Whether you're investing in, building, or deploying healthcare technology, we illuminate the path forward.</p>
+              </div>
             </div>
           </div>
         </div>
@@ -244,15 +248,16 @@ function App() {
       >
         <div className="flex justify-between items-end max-w-[1440px] mx-auto footer-container">
           <div className="flex flex-col">
-            <p 
+            <div 
               className="text-left"
               style={{
                 fontSize: '12px',
                 color: '#666'
               }}
             >
-              © {new Date().getFullYear()} Arclight Intelligence. All rights reserved.
-            </p>
+              <p>© {new Date().getFullYear()} Arclight Intelligence, LLC. All rights reserved.</p>
+              <p>Seattle, WA | contact@arclightintelligence.com</p>
+            </div>
           </div>
           <div className="flex space-x-5 footer-social">
             <a href="#" className="text-black hover:text-gray-600 transition-colors duration-300">
