@@ -12,19 +12,27 @@ function App() {
               alt="Arclight Intelligence" 
               className="h-12 w-auto"
               style={{
-                width: '160px',
-                clipPath: 'inset(8px 8px 8px 8px)'
+                width: '96px'
               }}
             />
           </div>
           <div>
-            <a 
-              href="mailto:contact@arclightintelligence.com?subject=Inquiry from Website"
-              className="text-black hover:text-gray-800 transition-colors duration-300"
-              style={{fontWeight: '600', fontSize: '14px', letterSpacing: '0.05em'}}
+            <button
+              onClick={() => window.location.href = 'mailto:contact@arclightintelligence.com?subject=Inquiry from Website'}
+              className="hover:opacity-80 transition-opacity duration-300"
+              style={{
+                backgroundColor: '#000000',
+                color: '#F5F0E8',
+                fontWeight: '600', 
+                fontSize: '14px', 
+                letterSpacing: '0.05em',
+                padding: '12px 24px',
+                border: 'none',
+                borderRadius: '4px'
+              }}
             >
               CONTACT
-            </a>
+            </button>
           </div>
         </nav>
       </header>
@@ -40,7 +48,7 @@ function App() {
               letterSpacing: '-0.02em'
             }}
           >
-            ILLUMINATE YOUR NEXT STEPS
+            ILLUMINATE THE PATH FORWARD
           </h1>
           <p 
             className="mb-10 max-w-3xl mx-auto leading-relaxed hero-subtitle"
@@ -52,18 +60,6 @@ function App() {
           >
             Bespoke Consulting for Healthcare Innovation
           </p>
-          <a 
-            href="mailto:contact@arclightintelligence.com?subject=Inquiry from Website"
-            className="inline-block border-2 border-black bg-transparent text-black hover:bg-black hover:text-white transition-all duration-300"
-            style={{
-              padding: '12px 30px',
-              fontSize: '14px',
-              letterSpacing: '0.05em',
-              fontWeight: '600'
-            }}
-          >
-            DISCOVER SOLUTIONS
-          </a>
         </div>
       </section>
 
@@ -208,27 +204,17 @@ function App() {
       {/* About Section */}
       <section className="px-8 section-spacing" style={{marginTop: '80px'}}>
         <div className="max-w-[1440px] mx-auto">
-          <div className="flex justify-start">
-            <div 
-              className="about-container" 
-              style={{
-                maxWidth: '400px',
-                marginLeft: '60px',
-                border: '1px solid #D4C5B9',
-                borderRadius: '8px',
-                padding: '40px',
-                backgroundColor: 'transparent'
-              }}
-            >
-              <div className="w-15 h-15 mx-auto mb-6 flex items-center justify-center">
-                <img src="/lighthouse.png" alt="About Us" style={{width: '120px', height: '120px'}} />
-              </div>
+          <div className="flex items-start gap-8 w-full px-8">
+            <div className="flex-shrink-0">
+              <img src="/lighthouse.png" alt="About Us" style={{width: '120px', height: '120px'}} />
+            </div>
+            <div className="flex-1">
               <h2 
                 className="text-black mb-5"
                 style={{
                   fontSize: '24px',
                   fontWeight: '700',
-                  margin: '20px 0'
+                  margin: '0 0 20px 0'
                 }}
               >
                 ABOUT US
@@ -241,7 +227,7 @@ function App() {
                   color: '#666'
                 }}
               >
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                Arclight Intelligence brings clarity to healthcare's most complex challenges. Founded by Dr. Ari Robicsek, a healthcare executive who has led analytics and research operations at one of America's largest health systems, Arclight Intelligence bridges the gap between innovation and implementation. With a track record of building high-performing analytics teams, developing FDA-cleared AI products, securing $35M+ in research funding, and generating $50M+ in operational savings, we understand what it takes to create lasting value in healthcare.
               </p>
             </div>
           </div>
@@ -265,7 +251,7 @@ function App() {
                 color: '#666'
               }}
             >
-              © 2024 Arclight Intelligence. All rights reserved.
+              © {new Date().getFullYear()} Arclight Intelligence. All rights reserved.
             </p>
           </div>
           <div className="flex space-x-5 footer-social">

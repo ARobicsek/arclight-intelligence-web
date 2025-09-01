@@ -53,7 +53,7 @@
 Based on the homepage mockup, the site features:
 
 - **Header**: Clean logo with "CONTACT" navigation
-- **Hero Section**: "ILLUMINATE YOUR NEXT STEPS" headline with "Bespoke Consulting for Healthcare Innovation" tagline
+- **Hero Section**: "ILLUMINATE THE PATH FORWARD" headline with "Bespoke Consulting for Healthcare Innovation" tagline
 - **CTA Button**: "DISCOVER SOLUTIONS" 
 - **Services Section**: "OUR EXPERTISE" with three service cards:
   - PE/VC ADVISORY (briefcase icon)

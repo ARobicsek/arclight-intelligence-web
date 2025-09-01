@@ -31,7 +31,7 @@ Based on the provided mockup and design requirements, this document outlines the
 
 ### 2. Hero Section
 - **Container**: Centered content, max-width 900px
-- **Main Heading**: "ILLUMINATE YOUR NEXT STEPS"
+- **Main Heading**: "ILLUMINATE THE PATH FORWARD"
   - Font-size: 48-54px
   - Font-weight: 900 (extra bold)
   - Letter-spacing: -0.02em (slightly condensed)
