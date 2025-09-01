@@ -69,17 +69,30 @@ button:focus {
   /* Hero section adjustments */
   .hero-title {
     font-size: 36px !important;
+    padding-left: 20px !important;
+    padding-right: 20px !important;
   }
   
   .hero-subtitle {
     font-size: 16px !important;
   }
   
+  /* Reduce hero section padding on mobile */
+  section:has(.hero-title) {
+    padding-top: 40px !important;
+    padding-bottom: 20px !important;
+  }
+  
   /* Section spacing adjustments */
   .section-spacing {
-    margin-top: 60px !important;
+    margin-top: 40px !important;
     padding-left: 20px !important;
     padding-right: 20px !important;
+  }
+  
+  /* Reduce spacing for expertise section title on mobile */
+  .section-spacing h2 {
+    margin-bottom: 30px !important;
   }
   
   /* Expertise cards mobile layout */

@@ -5,7 +5,8 @@
       "Read(c:\\Users\\ariro\\OneDrive\\Pictures\\Screenshots 1/**)",
       "Read(c:\\Users\\ariro\\OneDrive\\Pictures\\Screenshots 1/**)",
       "Read(c:\\Users\\ariro\\Downloads/**)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Read(c:\\Users\\ariro\\Downloads/**)"
     ],
     "deny": [],
     "ask": []
