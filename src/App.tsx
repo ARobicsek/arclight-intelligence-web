@@ -44,11 +44,11 @@ function App() {
             className="text-black mb-5 leading-tight hero-title"
             style={{
               fontSize: '50px',
-              fontWeight: '900',
+              fontWeight: '600',
               letterSpacing: '-0.02em'
             }}
           >
-            ILLUMINATE YOUR PATH TO HEALTHCARE INNOVATION
+            ILLUMINATE THE PATH FORWARD
           </h1>
           <p 
             className="mb-10 max-w-3xl mx-auto leading-relaxed hero-subtitle"
@@ -58,7 +58,7 @@ function App() {
               color: '#444'
             }}
           >
-            Expert guidance at the intersection of healthcare operations, data analytics, and emerging technology
+            Bespoke Consulting for Healthcare Innovation
           </p>
         </div>
       </section>
@@ -66,16 +66,6 @@ function App() {
       {/* Services Section */}
       <section className="px-8 section-spacing" style={{marginTop: '80px'}}>
         <div className="max-w-[1100px] mx-auto">
-          <h2 
-            className="text-center text-black mb-12"
-            style={{
-              fontSize: '34px',
-              fontWeight: '700',
-              marginBottom: '50px'
-            }}
-          >
-            OUR EXPERTISE
-          </h2>
           <div 
             style={{
               display: 'flex',
@@ -84,44 +74,6 @@ function App() {
               gap: '2rem'
             }}
           >
-            {/* PE/VC Advisory */}
-            <div 
-              className="text-center hover:shadow-lg transition-shadow duration-300 expertise-card" 
-              style={{
-                border: '1px solid #D4C5B9',
-                borderRadius: '8px',
-                padding: '40px 30px',
-                minHeight: '220px',
-                backgroundColor: 'transparent',
-                flex: '1',
-                minWidth: '300px'
-              }}
-            >
-              <div className="w-15 h-15 mx-auto mb-6 flex items-center justify-center">
-                <img src="/torch.png" alt="PE/VC Advisory" style={{width: '120px', height: '120px'}} />
-              </div>
-              <h3 
-                className="text-black mb-3"
-                style={{
-                  fontSize: '16px',
-                  fontWeight: '700',
-                  margin: '20px 0 10px'
-                }}
-              >
-                PE/VC ADVISORY
-              </h3>
-              <p 
-                className="leading-relaxed"
-                style={{
-                  fontSize: '14px',
-                  lineHeight: '1.6',
-                  color: '#666'
-                }}
-              >
-                Navigate healthcare investments with confidence. We provide deep operational insights, due diligence expertise, and strategic assessment of healthcare technology companies, leveraging 20+ years of experience leading analytics and innovation at Fortune 100 health systems.
-              </p>
-            </div>
-
             {/* Startup Strategy */}
             <div 
               className="text-center hover:shadow-lg transition-shadow duration-300 expertise-card" 
@@ -157,6 +109,44 @@ function App() {
                 }}
               >
                 Transform your vision into market reality. From product-market fit to go-to-market strategy, we help healthtech startups navigate complex healthcare ecosystems, RFP processes, and enterprise sales cycles with proven frameworks that have driven $100M+ implementations.
+              </p>
+            </div>
+
+            {/* PE/VC Advisory */}
+            <div 
+              className="text-center hover:shadow-lg transition-shadow duration-300 expertise-card" 
+              style={{
+                border: '1px solid #D4C5B9',
+                borderRadius: '8px',
+                padding: '40px 30px',
+                minHeight: '220px',
+                backgroundColor: 'transparent',
+                flex: '1',
+                minWidth: '300px'
+              }}
+            >
+              <div className="w-15 h-15 mx-auto mb-6 flex items-center justify-center">
+                <img src="/torch.png" alt="PE/VC Advisory" style={{width: '120px', height: '120px'}} />
+              </div>
+              <h3 
+                className="text-black mb-3"
+                style={{
+                  fontSize: '16px',
+                  fontWeight: '700',
+                  margin: '20px 0 10px'
+                }}
+              >
+                PE/VC ADVISORY
+              </h3>
+              <p 
+                className="leading-relaxed"
+                style={{
+                  fontSize: '14px',
+                  lineHeight: '1.6',
+                  color: '#666'
+                }}
+              >
+                Navigate healthcare investments with confidence. We provide deep operational insights, due diligence expertise, and strategic assessment of healthcare technology companies, leveraging 20+ years of experience leading analytics and innovation at Fortune 100 health systems.
               </p>
             </div>
 
@@ -204,7 +194,7 @@ function App() {
       {/* About Section */}
       <section className="px-8 section-spacing" style={{marginTop: '80px'}}>
         <div className="max-w-[1440px] mx-auto">
-          <div className="flex items-start gap-8 w-full px-8">
+          <div className="flex items-start gap-8 w-full px-8 about-container">
             <div className="flex-shrink-0">
               <img src="/lighthouse.png" alt="About Us" style={{width: '120px', height: '120px'}} />
             </div>
@@ -219,7 +209,7 @@ function App() {
               >
                 ABOUT US
               </h2>
-              <div 
+              <p 
                 className="leading-relaxed"
                 style={{
                   fontSize: '14px',
@@ -227,12 +217,8 @@ function App() {
                   color: '#666'
                 }}
               >
-                <p className="mb-4">Arclight Intelligence brings clarity to healthcare's most complex challenges.</p>
-                <p className="mb-4">Founded by Dr. Ari Robicsek, a healthcare executive who has led analytics and research operations at one of America's largest health systems, Arclight Intelligence bridges the gap between innovation and implementation.</p>
-                <p className="mb-4">With a track record of building high-performing analytics teams, developing FDA-cleared AI products, securing $35M+ in research funding, and generating $50M+ in operational savings, we understand what it takes to create lasting value in healthcare.</p>
-                <p className="mb-4">Our expertise spans the entire healthcare innovation lifecycle—from evaluating early-stage technologies to scaling enterprise-wide implementations. We've published in Nature and JAMA, built products used by thousands of clinicians, and helped shape the future of healthcare AI.</p>
-                <p>Whether you're investing in, building, or deploying healthcare technology, we illuminate the path forward.</p>
-              </div>
+                Arclight Intelligence brings clarity to healthcare's most complex challenges. Founded by Dr. Ari Robicsek, a healthcare executive who has led analytics and research operations at one of America's largest health systems, Arclight Intelligence bridges the gap between innovation and implementation. With a track record of building high-performing analytics teams, developing FDA-cleared AI products, securing $35M+ in research funding, and generating $50M+ in operational savings, we understand what it takes to create lasting value in healthcare. Our expertise spans the entire healthcare innovation lifecycle—from evaluating early-stage technologies to scaling enterprise-wide implementations. We've published in Nature and JAMA, built products used by thousands of clinicians, and helped shape the future of healthcare AI. Whether you're investing in, building, or deploying healthcare technology, we illuminate the path forward.
+              </p>
             </div>
           </div>
         </div>
@@ -247,17 +233,16 @@ function App() {
         }}
       >
         <div className="flex justify-between items-end max-w-[1440px] mx-auto footer-container">
-          <div className="flex flex-col">
-            <div 
+          <div className="flex flex-col" style={{paddingLeft: '8px'}}>
+            <p 
               className="text-left"
               style={{
                 fontSize: '12px',
                 color: '#666'
               }}
             >
-              <p>© {new Date().getFullYear()} Arclight Intelligence, LLC. All rights reserved.</p>
-              <p>Seattle, WA | contact@arclightintelligence.com</p>
-            </div>
+              © {new Date().getFullYear()} Arclight Intelligence. All rights reserved.
+            </p>
           </div>
           <div className="flex space-x-5 footer-social">
             <a href="#" className="text-black hover:text-gray-600 transition-colors duration-300">
