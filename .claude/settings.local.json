@@ -8,7 +8,9 @@
       "Bash(git add:*)",
       "Read(c:\\Users\\ariro\\Downloads/**)",
       "Bash(git commit:*)",
-      "Read(C:\\Users\\ariro\\OneDrive\\Pictures\\Screenshots 1/**)"
+      "Read(C:\\Users\\ariro\\OneDrive\\Pictures\\Screenshots 1/**)",
+      "Read(c:\\Users\\ariro\\OneDrive\\Pictures\\Screenshots 1/**)",
+      "Read(c:\\Users\\ariro\\Downloads/**)"
     ],
     "deny": [],
     "ask": []

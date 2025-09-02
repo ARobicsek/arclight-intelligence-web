@@ -19,7 +19,7 @@ function App() {
           <div>
             <button
               onClick={() => window.location.href = 'mailto:contact@arclightintelligence.com?subject=Inquiry from Website'}
-              className="hover:opacity-80 transition-opacity duration-300"
+              className="contact-button hover:opacity-80 transition-opacity duration-300"
               style={{
                 backgroundColor: '#000000',
                 color: '#F5F0E8',
@@ -40,8 +40,9 @@ function App() {
       {/* Hero Section */}
       <section className="py-20 px-8">
         <div className="max-w-[900px] mx-auto text-center">
+          {/* Desktop Title */}
           <h1 
-            className="text-black mb-5 leading-tight hero-title"
+            className="text-black mb-5 leading-tight hero-title hero-title-desktop"
             style={{
               fontSize: '50px',
               fontWeight: '600',
@@ -49,6 +50,17 @@ function App() {
             }}
           >
             ILLUMINATE THE PATH FORWARD
+          </h1>
+          {/* Mobile Title with Line Break */}
+          <h1 
+            className="text-black mb-5 leading-tight hero-title hero-title-mobile"
+            style={{
+              fontSize: '50px',
+              fontWeight: '600',
+              letterSpacing: '-0.02em'
+            }}
+          >
+            ILLUMINATE<br />THE PATH FORWARD
           </h1>
           <p 
             className="mb-10 max-w-3xl mx-auto leading-relaxed hero-subtitle"
@@ -108,7 +120,7 @@ function App() {
                   color: '#666'
                 }}
               >
-                Transform your vision into market reality. From product-market fit to go-to-market strategy, we help healthtech startups navigate complex healthcare ecosystems, RFP processes, and enterprise sales cycles with proven frameworks that have driven $100M+ implementations.
+                We help healthtech startups navigate technically and politically complex healthcare ecosystems, RFP processes, and enterprise sales cycles. We have extensive inside knowledge of these human and technological ecosystems, and can help you figure out how to get them to work for you.
               </p>
             </div>
 
@@ -136,7 +148,7 @@ function App() {
                   margin: '20px 0 10px'
                 }}
               >
-                PE/VC ADVISORY
+                PE & VC ADVISORY
               </h3>
               <p 
                 className="leading-relaxed"
@@ -146,7 +158,7 @@ function App() {
                   color: '#666'
                 }}
               >
-                Navigate healthcare investments with confidence. We provide deep operational insights, due diligence expertise, and strategic assessment of healthcare technology companies, leveraging 20+ years of experience leading analytics and innovation at Fortune 100 health systems.
+                We provide deep operational insights, due diligence expertise, and strategic assessment of healthcare technology companies, leveraging 20+ years of experience leading analytics, informatics and innovation at large and mid-sized healthsystems. We've seen it all, and we know what works in real life.
               </p>
             </div>
 
@@ -174,7 +186,7 @@ function App() {
                   margin: '20px 0 10px'
                 }}
               >
-                HEALTHCARE AI/DATA
+                HEALTHCARE AI & DATA
               </h3>
               <p 
                 className="leading-relaxed"
@@ -184,7 +196,7 @@ function App() {
                   color: '#666'
                 }}
               >
-                Turn data into competitive advantage. We guide healthcare organizations through AI adoption, analytics transformation, and data strategy development—from building centers of excellence to deploying production-ready ML models that improve outcomes and reduce costs.
+                We guide healthcare organizations through AI adoption, analytics transformation, and data strategy development—from building centers of excellence to deploying production-ready ML models. We see past the fluff and know how to make analytics and AI actually further your strategy.
               </p>
             </div>
           </div>
@@ -217,12 +229,36 @@ function App() {
                   color: '#666'
                 }}
               >
-                Arclight Intelligence brings clarity to healthcare's most complex challenges. Founded by Dr. Ari Robicsek, a healthcare executive who has led analytics and research operations at one of America's largest health systems, Arclight Intelligence bridges the gap between innovation and implementation. With a track record of building high-performing analytics teams, developing FDA-cleared AI products, securing $35M+ in research funding, and generating $50M+ in operational savings, we understand what it takes to create lasting value in healthcare. Our expertise spans the entire healthcare innovation lifecycle—from evaluating early-stage technologies to scaling enterprise-wide implementations. We've published in Nature and JAMA, built products used by thousands of clinicians, and helped shape the future of healthcare AI. Whether you're investing in, building, or deploying healthcare technology, we illuminate the path forward.
+                Arclight Intelligence brings clarity to healthcare's most complex challenges. We're founded by <a href="https://www.linkedin.com/in/ari-robicsek-a408bba2/" target="_blank" rel="noopener noreferrer" style={{color: '#666', textDecoration: 'underline'}}>Dr. Ari Robicsek</a>, a physician-healthcare executive who has led both analytics and research operations at healthcare organizations of different sizes, including one of America's largest providers. His experience includes building high-performing analytics teams, securing tens of millions in research funding for innovation projects and generating tens of millions in operational savings through practical deployment of analytics and AI. He has published in Nature and JAMA, built products used by thousands of clinicians and innovated some of the earliest forms of ML-based clinical decision support.
+<br />At Arclight Intelligence we understand the challenging journey from an exciting idea to a product that has measurable impact in the healthcare environment. We've been there: at the bedside, in the boardroom and in the back offices with the IT professionals; we know what fails and what works. And we can help you see your path forward.
+
               </p>
             </div>
           </div>
         </div>
       </section>
+
+      {/* Mobile Contact Button */}
+      <div className="px-8">
+        <div className="max-w-[1440px] mx-auto">
+          <button
+            onClick={() => window.location.href = 'mailto:contact@arclightintelligence.com?subject=Inquiry from Website'}
+            className="mobile-contact-button hover:opacity-80 transition-opacity duration-300"
+            style={{
+              backgroundColor: '#000000',
+              color: '#F5F0E8',
+              fontWeight: '600', 
+              fontSize: '14px', 
+              letterSpacing: '0.05em',
+              padding: '12px 24px',
+              border: 'none',
+              borderRadius: '4px'
+            }}
+          >
+            CONTACT
+          </button>
+        </div>
+      </div>
 
       {/* Footer */}
       <footer 
@@ -233,9 +269,8 @@ function App() {
         }}
       >
         <div className="flex justify-between items-end max-w-[1440px] mx-auto footer-container">
-          <div className="flex flex-col" style={{paddingLeft: '8px'}}>
+          <div className="flex flex-col copyright-container" style={{paddingLeft: '8px'}}>
             <p 
-              className="text-left"
               style={{
                 fontSize: '12px',
                 color: '#666'
