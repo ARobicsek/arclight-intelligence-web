@@ -242,7 +242,7 @@ function App() {
       <div className="px-8">
         <div className="max-w-[1440px] mx-auto">
           <button
-            onClick={() => window.location.href = 'mailto:contact@arclightintelligence.com?subject=Inquiry from Website'}
+            onClick={() => window.location.href = 'mailto:contact@arclightint.com?subject=Inquiry from Website'}
             className="mobile-contact-button hover:opacity-80 transition-opacity duration-300"
             style={{
               backgroundColor: '#000000',
