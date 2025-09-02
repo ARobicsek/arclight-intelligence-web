@@ -18,7 +18,7 @@ function App() {
           </div>
           <div>
             <button
-              onClick={() => window.location.href = 'mailto:contact@arclight.com?subject=Inquiry from Website'}
+              onClick={() => window.location.href = 'mailto:contact@arclightint.com?subject=Inquiry from Website'}
               className="contact-button hover:opacity-80 transition-opacity duration-300"
               style={{
                 backgroundColor: '#000000',
