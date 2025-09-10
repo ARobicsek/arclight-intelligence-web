@@ -8,7 +8,7 @@
     "build": "npm run build:client && npm run build:server",
     "build:client": "vite build --outDir dist/client",
     "build:server": "vite build --outDir dist/server --ssr src/entry-server.tsx",
-    "serve": "node server.js",
+    "serve": "set NODE_ENV=production && node server.js",
     "preview": "npm run build && npm run serve",
     "dev:ssr": "node server.js",
     "lint": "eslint ."

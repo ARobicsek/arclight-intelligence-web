@@ -7,7 +7,7 @@ import { createRequire } from 'node:module'
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const require = createRequire(import.meta.url)
 
-const isProduction = process.env.NODE_ENV === 'production' || !fs.existsSync('./src')
+const isProduction = process.env.NODE_ENV === 'production' || fs.existsSync('./dist/server/entry-server.js')
 const port = process.env.PORT || 3000
 const base = process.env.BASE || '/'
 
@@ -40,34 +40,17 @@ async function handleSSR(req, res) {
   try {
     const url = req.originalUrl.replace(base, '')
 
-    let template
     let render
     
     if (!isProduction) {
-      // Development mode
-      template = fs.readFileSync(path.resolve(__dirname, 'index.html'), 'utf-8')
-      template = await vite.transformIndexHtml(url, template)
+      // Development mode with Vite
       render = (await vite.ssrLoadModule('/src/entry-server.tsx')).renderPage
     } else {
-      // Production mode
-      template = fs.readFileSync(
-        path.resolve(__dirname, 'dist/client/index.html'),
-        'utf-8'
-      )
+      // Production mode with built files
       render = require('./dist/server/entry-server.js').renderPage
     }
 
-    const rendered = render()
-
-    let html
-    if (!isProduction) {
-      // In development, just return the rendered content
-      html = rendered
-    } else {
-      // In production, inject into template
-      html = template.replace('<!--app-html-->', rendered)
-    }
-
+    const html = render()
     res.status(200).set({ 'Content-Type': 'text/html' }).send(html)
   } catch (e) {
     console.error('SSR error:', e)

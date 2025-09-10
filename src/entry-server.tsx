@@ -19,64 +19,29 @@ export function renderPage() {
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="icon" type="image/x-icon" href="/logo.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Arclight Intelligence - Healthcare Innovation Consulting</title>
-    <meta name="description" content="Bespoke consulting for healthcare innovation. We help healthtech startups navigate complex healthcare ecosystems and provide strategic guidance for PE/VC advisory." />
+    <meta name="description" content="Expert guidance at the intersection of healthcare operations, data analytics, and emerging technology. PE/VC Advisory, Startup Strategy, and Healthcare AI/Data Implementation." />
+    <meta name="keywords" content="healthcare consulting, healthcare AI, healthcare data analytics, PE VC advisory, healthcare startups, healthcare innovation, Dr. Ari Robicsek" />
+    <meta name="author" content="Arclight Intelligence, LLC" />
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://arclightint.com/" />
+    <meta property="og:url" content="https://arclightintelligence.com" />
     <meta property="og:title" content="Arclight Intelligence - Healthcare Innovation Consulting" />
-    <meta property="og:description" content="Bespoke consulting for healthcare innovation. We help healthtech startups navigate complex healthcare ecosystems and provide strategic guidance for PE/VC advisory." />
-    <meta property="og:image" content="/logo.png" />
+    <meta property="og:description" content="Expert guidance at the intersection of healthcare operations, data analytics, and emerging technology." />
+    <meta property="og:image" content="https://arclightintelligence.com/logo.png" />
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content="https://arclightint.com/" />
+    <meta property="twitter:url" content="https://arclightintelligence.com" />
     <meta property="twitter:title" content="Arclight Intelligence - Healthcare Innovation Consulting" />
-    <meta property="twitter:description" content="Bespoke consulting for healthcare innovation. We help healthtech startups navigate complex healthcare ecosystems and provide strategic guidance for PE/VC advisory." />
-    <meta property="twitter:image" content="/logo.png" />
+    <meta property="twitter:description" content="Expert guidance at the intersection of healthcare operations, data analytics, and emerging technology." />
+    <meta property="twitter:image" content="https://arclightintelligence.com/logo.png" />
     
-    <!-- Structured Data -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "Arclight Intelligence",
-      "url": "https://arclightint.com",
-      "logo": "https://arclightint.com/logo.png",
-      "description": "Bespoke consulting for healthcare innovation",
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "email": "contact@arclightint.com",
-        "contactType": "customer service"
-      },
-      "founder": {
-        "@type": "Person",
-        "name": "Dr. Ari Robicsek",
-        "jobTitle": "Founder",
-        "url": "https://www.linkedin.com/in/ari-robicsek-a408bba2/"
-      },
-      "service": [
-        {
-          "@type": "Service",
-          "name": "Startup Strategy",
-          "description": "We help healthtech startups navigate technically and politically complex healthcare ecosystems, RFP processes, and enterprise sales cycles."
-        },
-        {
-          "@type": "Service", 
-          "name": "PE & VC Advisory",
-          "description": "We provide deep operational insights, due diligence expertise, and strategic assessment of healthcare technology companies."
-        },
-        {
-          "@type": "Service",
-          "name": "Healthcare AI & Data",
-          "description": "We guide healthcare organizations through AI adoption, analytics transformation, and data strategy development."
-        }
-      ]
-    }
-    </script>
+    <script type="module" crossorigin src="/assets/main-DKTLX5q4.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/main-D9ziHzso.css">
   </head>
   <body>
     <div id="root">${appHtml}</div>
