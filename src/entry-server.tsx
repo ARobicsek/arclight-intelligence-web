@@ -19,7 +19,15 @@ export function renderPage() {
   const headContent = isProduction
     ? `<script type="module" crossorigin src="/assets/main-DKTLX5q4.js"></script>
     <link rel="stylesheet" crossorigin href="/assets/main-D9ziHzso.css">`
-    : `<script type="module" src="/@vite/client"></script>
+    : `<script>
+    try {
+      alert('BASIC JS TEST: JavaScript works on mobile!');
+      console.log('BASIC JS: Inline script executed');
+    } catch(e) {
+      alert('BASIC JS ERROR: ' + e.message);
+    }
+    </script>
+    <script type="module" src="/@vite/client"></script>
     <script type="module" src="/src/main.tsx"></script>`
   
   return `<!DOCTYPE html>

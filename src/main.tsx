@@ -4,6 +4,7 @@ import './index.css'
 import App from './App.tsx'
 
 console.log('[MOBILE DEBUG] main.tsx loaded, starting React initialization')
+alert('[MOBILE DEBUG] main.tsx script loaded! UA: ' + navigator.userAgent.substring(0, 50))
 console.log('[MOBILE DEBUG] User agent:', navigator.userAgent)
 console.log('[MOBILE DEBUG] Document ready state:', document.readyState)
 

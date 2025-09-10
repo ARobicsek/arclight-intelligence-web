@@ -10,7 +10,20 @@
       "Bash(git commit:*)",
       "Read(C:\\Users\\ariro\\OneDrive\\Pictures\\Screenshots 1/**)",
       "Read(c:\\Users\\ariro\\OneDrive\\Pictures\\Screenshots 1/**)",
-      "Read(c:\\Users\\ariro\\Downloads/**)"
+      "Read(c:\\Users\\ariro\\Downloads/**)",
+      "Bash(git push:*)",
+      "Bash(npm run lint)",
+      "Bash(npx tsc:*)",
+      "Bash(npm install:*)",
+      "Bash(npm run build:*)",
+      "Bash(npm uninstall:*)",
+      "Bash(git checkout:*)",
+      "Bash(npm run serve:*)",
+      "Bash(curl:*)",
+      "Bash(echo $NODE_ENV)",
+      "Bash(node server.js)",
+      "Read(//c/Users/ariro/OneDrive/Pictures/Screenshots 1/**)",
+      "Bash(pkill:*)"
     ],
     "deny": [],
     "ask": []
