@@ -14,6 +14,13 @@ export function render() {
 
 export function renderPage() {
   const appHtml = render()
+  const isProduction = process.env.NODE_ENV === 'production'
+  
+  const headContent = isProduction
+    ? `<script type="module" crossorigin src="/assets/main-DKTLX5q4.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/main-D9ziHzso.css">`
+    : `<script type="module" src="/@vite/client"></script>
+    <script type="module" src="/src/main.tsx"></script>`
   
   return `<!DOCTYPE html>
 <html lang="en">
@@ -40,8 +47,7 @@ export function renderPage() {
     <meta property="twitter:description" content="Expert guidance at the intersection of healthcare operations, data analytics, and emerging technology." />
     <meta property="twitter:image" content="https://arclightintelligence.com/logo.png" />
     
-    <script type="module" crossorigin src="/assets/main-DKTLX5q4.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/main-D9ziHzso.css">
+    ${headContent}
   </head>
   <body>
     <div id="root">${appHtml}</div>

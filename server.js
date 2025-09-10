@@ -26,14 +26,15 @@ if (!isProduction) {
   app.use(vite.ssrLoadModule ? vite.middlewares : vite.ssrFix)
 }
 
-// Serve static files
+// Serve static files BEFORE SSR handler
 if (isProduction) {
+  app.use('/assets', express.static(path.resolve(__dirname, 'dist/client/assets')))
   app.use(express.static(path.resolve(__dirname, 'dist/client'), { index: false }))
 } else {
   // In development, vite handles static files
 }
 
-// SSR route handler - handle all routes
+// SSR route handler - handle remaining routes (after static files)
 app.use(handleSSR)
 
 async function handleSSR(req, res) {
