@@ -58,7 +58,22 @@ export function renderPage() {
     ${headContent}
   </head>
   <body>
+    <noscript>
+      <div style="background: red; color: white; padding: 20px; text-align: center;">
+        <h1>MOBILE DEBUG: JavaScript is disabled or blocked</h1>
+        <p>This confirms JavaScript execution is failing on mobile</p>
+      </div>
+    </noscript>
+    <div style="background: blue; color: white; padding: 10px; text-align: center; position: fixed; top: 0; left: 0; right: 0; z-index: 9999;">
+      MOBILE DEBUG: HTML is loading - User Agent: <span id="ua-display">Loading...</span>
+    </div>
     <div id="root">${appHtml}</div>
+    <div style="background: green; color: white; padding: 10px; text-align: center; position: fixed; bottom: 0; left: 0; right: 0; z-index: 9999;">
+      MOBILE DEBUG: HTML fully loaded - Checking JS execution...
+    </div>
+    <script>
+      document.getElementById('ua-display').textContent = navigator.userAgent.substring(0, 80);
+    </script>
   </body>
 </html>`
 }
