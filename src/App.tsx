@@ -1,6 +1,53 @@
 import './App.css'
+import { useState, useEffect } from 'react'
 
 function App() {
+  const [showEmailDropdown, setShowEmailDropdown] = useState(false)
+  const [showMobileEmailDropdown, setShowMobileEmailDropdown] = useState(false)
+
+  // Close dropdowns when clicking outside
+  useEffect(() => {
+    const handleClickOutside = () => {
+      setShowEmailDropdown(false)
+      setShowMobileEmailDropdown(false)
+    }
+    
+    if (showEmailDropdown || showMobileEmailDropdown) {
+      document.addEventListener('click', handleClickOutside)
+      return () => document.removeEventListener('click', handleClickOutside)
+    }
+  }, [showEmailDropdown, showMobileEmailDropdown])
+
+  const handleEmailOption = (service: string) => {
+    const email = 'contact@arclightint.com'
+    const subject = 'Inquiry from Website'
+    const body = 'Hello, I would like to inquire about your services.'
+    
+    let url = ''
+    
+    switch (service) {
+      case 'outlook':
+        url = `https://outlook.live.com/mail/0/deeplink/compose?to=${email}&subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
+        break
+      case 'gmail':
+        url = `https://mail.google.com/mail/?view=cm&to=${email}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
+        break
+      case 'yahoo':
+        url = `https://compose.mail.yahoo.com/?to=${email}&subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
+        break
+      case 'copy':
+        navigator.clipboard.writeText(email)
+        alert('Email address copied to clipboard!')
+        return
+      default:
+        // Fallback to mailto for default email client
+        url = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
+    }
+    
+    window.open(url, '_blank', 'noopener,noreferrer')
+    setShowEmailDropdown(false)
+    setShowMobileEmailDropdown(false)
+  }
   return (
     <div className="min-h-screen" style={{backgroundColor: '#F5F0E8'}}>
       {/* Header */}
@@ -16,9 +63,12 @@ function App() {
               }}
             />
           </div>
-          <div>
+          <div style={{ position: 'relative' }}>
             <button
-              onClick={() => window.location.href = 'mailto:contact@arclightint.com?subject=Inquiry from Website'}
+              onClick={(e) => {
+                e.stopPropagation()
+                setShowEmailDropdown(!showEmailDropdown)
+              }}
               className="contact-button hover:opacity-80 transition-opacity duration-300"
               style={{
                 backgroundColor: '#000000',
@@ -31,8 +81,135 @@ function App() {
                 borderRadius: '4px'
               }}
             >
-              CONTACT
+              CONTACT ▼
             </button>
+            {showEmailDropdown && (
+              <div 
+                style={{
+                  position: 'absolute',
+                  top: '100%',
+                  right: '0',
+                  backgroundColor: 'white',
+                  border: '1px solid #D4C5B9',
+                  borderRadius: '4px',
+                  boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+                  zIndex: 1000,
+                  minWidth: '180px',
+                  marginTop: '4px'
+                }}
+              >
+                <button
+                  onClick={() => handleEmailOption('outlook')}
+                  style={{
+                    width: '100%',
+                    padding: '12px 16px',
+                    border: 'none',
+                    background: 'none',
+                    textAlign: 'left',
+                    fontSize: '14px',
+                    cursor: 'pointer',
+                    borderBottom: '1px solid #f0f0f0',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '10px'
+                  }}
+                  onMouseEnter={(e) => e.target.style.backgroundColor = '#f5f5f5'}
+                  onMouseLeave={(e) => e.target.style.backgroundColor = 'transparent'}
+                >
+                  <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/microsoftoutlook.svg" width="16" height="16" alt="Outlook" style={{filter: 'none'}} />
+                  Outlook
+                </button>
+                <button
+                  onClick={() => handleEmailOption('gmail')}
+                  style={{
+                    width: '100%',
+                    padding: '12px 16px',
+                    border: 'none',
+                    background: 'none',
+                    textAlign: 'left',
+                    fontSize: '14px',
+                    cursor: 'pointer',
+                    borderBottom: '1px solid #f0f0f0',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '10px'
+                  }}
+                  onMouseEnter={(e) => e.target.style.backgroundColor = '#f5f5f5'}
+                  onMouseLeave={(e) => e.target.style.backgroundColor = 'transparent'}
+                >
+                  <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/gmail.svg" width="16" height="16" alt="Gmail" style={{filter: 'none'}} />
+                  Gmail
+                </button>
+                <button
+                  onClick={() => handleEmailOption('yahoo')}
+                  style={{
+                    width: '100%',
+                    padding: '12px 16px',
+                    border: 'none',
+                    background: 'none',
+                    textAlign: 'left',
+                    fontSize: '14px',
+                    cursor: 'pointer',
+                    borderBottom: '1px solid #f0f0f0',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '10px'
+                  }}
+                  onMouseEnter={(e) => e.target.style.backgroundColor = '#f5f5f5'}
+                  onMouseLeave={(e) => e.target.style.backgroundColor = 'transparent'}
+                >
+                  <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/yahoo.svg" width="16" height="16" alt="Yahoo" style={{filter: 'none'}} />
+                  Yahoo Mail
+                </button>
+                <button
+                  onClick={() => handleEmailOption('default')}
+                  style={{
+                    width: '100%',
+                    padding: '12px 16px',
+                    border: 'none',
+                    background: 'none',
+                    textAlign: 'left',
+                    fontSize: '14px',
+                    cursor: 'pointer',
+                    borderBottom: '1px solid #f0f0f0',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '10px'
+                  }}
+                  onMouseEnter={(e) => e.target.style.backgroundColor = '#f5f5f5'}
+                  onMouseLeave={(e) => e.target.style.backgroundColor = 'transparent'}
+                >
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#666" strokeWidth="2">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                    <polyline points="22,6 12,13 2,6"/>
+                  </svg>
+                  Default Email App
+                </button>
+                <button
+                  onClick={() => handleEmailOption('copy')}
+                  style={{
+                    width: '100%',
+                    padding: '12px 16px',
+                    border: 'none',
+                    background: 'none',
+                    textAlign: 'left',
+                    fontSize: '14px',
+                    cursor: 'pointer',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '10px'
+                  }}
+                  onMouseEnter={(e) => e.target.style.backgroundColor = '#f5f5f5'}
+                  onMouseLeave={(e) => e.target.style.backgroundColor = 'transparent'}
+                >
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#666" strokeWidth="2">
+                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+                  </svg>
+                  Copy Email Address
+                </button>
+              </div>
+            )}
           </div>
         </nav>
       </header>
@@ -240,9 +417,12 @@ function App() {
 
       {/* Mobile Contact Button */}
       <div className="px-8">
-        <div className="max-w-[1440px] mx-auto">
+        <div className="max-w-[1440px] mx-auto" style={{ position: 'relative' }}>
           <button
-            onClick={() => window.location.href = 'mailto:contact@arclightint.com?subject=Inquiry from Website'}
+            onClick={(e) => {
+              e.stopPropagation()
+              setShowMobileEmailDropdown(!showMobileEmailDropdown)
+            }}
             className="mobile-contact-button hover:opacity-80 transition-opacity duration-300"
             style={{
               backgroundColor: '#000000',
@@ -255,8 +435,135 @@ function App() {
               borderRadius: '4px'
             }}
           >
-            CONTACT
+            CONTACT ▼
           </button>
+          {showMobileEmailDropdown && (
+            <div 
+              style={{
+                position: 'absolute',
+                top: '100%',
+                left: '0',
+                backgroundColor: 'white',
+                border: '1px solid #D4C5B9',
+                borderRadius: '4px',
+                boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+                zIndex: 1000,
+                minWidth: '200px',
+                marginTop: '4px'
+              }}
+            >
+              <button
+                onClick={() => handleEmailOption('outlook')}
+                style={{
+                  width: '100%',
+                  padding: '12px 16px',
+                  border: 'none',
+                  background: 'none',
+                  textAlign: 'left',
+                  fontSize: '14px',
+                  cursor: 'pointer',
+                  borderBottom: '1px solid #f0f0f0',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '10px'
+                }}
+                onMouseEnter={(e) => e.target.style.backgroundColor = '#f5f5f5'}
+                onMouseLeave={(e) => e.target.style.backgroundColor = 'transparent'}
+              >
+                <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/microsoftoutlook.svg" width="16" height="16" alt="Outlook" style={{filter: 'none'}} />
+                Outlook
+              </button>
+              <button
+                onClick={() => handleEmailOption('gmail')}
+                style={{
+                  width: '100%',
+                  padding: '12px 16px',
+                  border: 'none',
+                  background: 'none',
+                  textAlign: 'left',
+                  fontSize: '14px',
+                  cursor: 'pointer',
+                  borderBottom: '1px solid #f0f0f0',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '10px'
+                }}
+                onMouseEnter={(e) => e.target.style.backgroundColor = '#f5f5f5'}
+                onMouseLeave={(e) => e.target.style.backgroundColor = 'transparent'}
+              >
+                <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/gmail.svg" width="16" height="16" alt="Gmail" style={{filter: 'none'}} />
+                Gmail
+              </button>
+              <button
+                onClick={() => handleEmailOption('yahoo')}
+                style={{
+                  width: '100%',
+                  padding: '12px 16px',
+                  border: 'none',
+                  background: 'none',
+                  textAlign: 'left',
+                  fontSize: '14px',
+                  cursor: 'pointer',
+                  borderBottom: '1px solid #f0f0f0',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '10px'
+                }}
+                onMouseEnter={(e) => e.target.style.backgroundColor = '#f5f5f5'}
+                onMouseLeave={(e) => e.target.style.backgroundColor = 'transparent'}
+              >
+                <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/yahoo.svg" width="16" height="16" alt="Yahoo" style={{filter: 'none'}} />
+                Yahoo Mail
+              </button>
+              <button
+                onClick={() => handleEmailOption('default')}
+                style={{
+                  width: '100%',
+                  padding: '12px 16px',
+                  border: 'none',
+                  background: 'none',
+                  textAlign: 'left',
+                  fontSize: '14px',
+                  cursor: 'pointer',
+                  borderBottom: '1px solid #f0f0f0',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '10px'
+                }}
+                onMouseEnter={(e) => e.target.style.backgroundColor = '#f5f5f5'}
+                onMouseLeave={(e) => e.target.style.backgroundColor = 'transparent'}
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#666" strokeWidth="2">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                  <polyline points="22,6 12,13 2,6"/>
+                </svg>
+                Default Email App
+              </button>
+              <button
+                onClick={() => handleEmailOption('copy')}
+                style={{
+                  width: '100%',
+                  padding: '12px 16px',
+                  border: 'none',
+                  background: 'none',
+                  textAlign: 'left',
+                  fontSize: '14px',
+                  cursor: 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '10px'
+                }}
+                onMouseEnter={(e) => e.target.style.backgroundColor = '#f5f5f5'}
+                onMouseLeave={(e) => e.target.style.backgroundColor = 'transparent'}
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#666" strokeWidth="2">
+                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+                </svg>
+                Copy Email Address
+              </button>
+            </div>
+          )}
         </div>
       </div>
 
