@@ -1,3 +1,78 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@theme {
+  /* Colors */
+  --color-background: #FFFFFF;
+  --color-foreground: #000000;
+  --color-muted: #F5F5F5;
+  --color-muted-foreground: #525252;
+  --color-accent: #000000;
+  --color-accent-foreground: #FFFFFF;
+  --color-border: #000000;
+  --color-border-light: #E5E5E5;
+  --color-card: #FFFFFF;
+  --color-card-foreground: #000000;
+  --color-ring: #000000;
+
+  /* Typography */
+  --font-display: "Playfair Display", Georgia, serif;
+  --font-body: "Source Serif 4", Georgia, serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  /* Border Radii (Strictly 0) */
+  --radius-sm: 0px;
+  --radius-md: 0px;
+  --radius-lg: 0px;
+  --radius-xl: 0px;
+  --radius-2xl: 0px;
+  --radius-3xl: 0px;
+  --radius-4xl: 0px;
+
+  /* Box Shadows (Strictly none) */
+  --shadow-sm: none;
+  --shadow-md: none;
+  --shadow-lg: none;
+  --shadow-xl: none;
+  --shadow-2xl: none;
+  --shadow-inner: none;
+}
+
+@layer utilities {
+  .texture-lines {
+    background-image: repeating-linear-gradient(0deg,
+        transparent,
+        transparent 1px,
+        #000 1px,
+        #000 2px);
+    background-size: 100% 4px;
+  }
+
+  .texture-grid {
+    background-image:
+      linear-gradient(#00000008 1px, transparent 1px),
+      linear-gradient(90deg, #00000008 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  .texture-noise {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.3'/%3E%3C/svg%3E");
+    opacity: 0.8;
+    /* Slightly more visible since we use a background color now */
+    background-color: #F5F5F5;
+  }
+
+  .texture-inverted-lines {
+    background-image: repeating-linear-gradient(90deg,
+        transparent,
+        transparent 1px,
+        #fff 1px,
+        #fff 2px);
+    background-size: 4px 100%;
+  }
+
+  .texture-inverted-radial {
+    background-image: radial-gradient(circle at top center,
+        #ffffff,
+        transparent 70%);
+  }
+}

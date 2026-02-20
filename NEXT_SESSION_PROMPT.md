@@ -1,48 +1,43 @@
-# Starting Prompt for Next Claude Code Session
+# Next Session: Fix Mobile Copyright Centering
 
-## CRITICAL MOBILE SSR DEBUGGING - CONTINUATION
+## Current Issue
+The copyright text in the footer is still not properly centered on mobile devices despite multiple CSS attempts. It appears slightly right of center.
 
-**Please read MOBILE_SSR_DEBUG_HANDOFF.md first for full context.**
+## What We've Tried
+1. Added CSS targeting `.footer-container .text-left` with `text-align: center !important`
+2. Added more specific selectors like `footer .text-left` and `.footer-container .flex-col .text-left`
+3. Added custom classes `copyright-container` and `copyright-text` with centering rules
+4. Removed `padding-left: 8px` that might have been causing offset
 
-### Current Situation
-The Arclight Intelligence website has a **critical mobile compatibility issue**:
-- ✅ **Desktop**: Perfect (formatting + Contact button working)
-- ❌ **Mobile**: Still blank screens despite SSR fixes
-- ✅ **Server responses**: Identical complete HTML for both desktop/mobile
+## Current HTML Structure
+```html
+<div className="flex flex-col copyright-container" style={{paddingLeft: '8px'}}>
+  <p 
+    className="text-left copyright-text"
+    style={{
+      fontSize: '12px',
+      color: '#666'
+    }}
+  >
+    © 2025 Arclight Intelligence. All rights reserved.
+  </p>
+</div>
+```
 
-### What You Need to Do Immediately
+## Next Steps to Try
+1. **Remove Tailwind class entirely**: Change `className="text-left copyright-text"` to just `className="copyright-text"` 
+2. **Use inline styles**: Add `textAlign: 'center'` to the inline style object to override everything
+3. **Check parent container**: The issue might be with the parent flex container layout on mobile
+4. **Inspect computed styles**: The Tailwind `text-left` class may have higher specificity than expected
 
-1. **Read the handoff document**: `MOBILE_SSR_DEBUG_HANDOFF.md` contains all technical details
+## Site Status
+- Successfully deployed to arclightint.com
+- Mobile improvements completed:
+  ✅ Contact button moved to footer area (not fixed position)  
+  ✅ Logo centered on mobile
+  ✅ Title text larger with line break ("ILLUMINATE" / "THE PATH FORWARD")
+  ✅ Title overflow fixed
+  ❌ Copyright text centering (still needs fix)
 
-2. **Start the development server**:
-   ```bash
-   node server.js
-   ```
-
-3. **Begin client-side debugging** since server-side is working:
-   - The issue is likely JavaScript not executing on mobile
-   - React hydration may be failing on mobile browsers
-   - Asset loading might have mobile-specific problems
-
-### Key Debugging Strategy
-Since server responses are identical but mobile shows blank screens, focus on:
-
-1. **JavaScript execution**: Check if JS runs on mobile
-2. **Asset loading**: Verify `/@vite/client` and `/src/main.tsx` load on mobile  
-3. **React hydration**: Test if React mounts properly on mobile
-4. **Browser console**: Look for mobile-specific JS errors
-
-### Immediate Actions
-1. Test asset accessibility from mobile perspective
-2. Add debug logging to main.tsx to track React mounting
-3. Check mobile browser dev tools for errors
-4. Verify Vite client script execution on mobile
-
-### Recent Changes (Already Committed)
-- Fixed environment-aware asset loading in `src/entry-server.tsx`
-- Fixed Express middleware order in `server.js`
-- Contact button functionality restored
-
-The core SSR implementation is working (proven by identical server responses), so the issue is **client-side JavaScript execution specific to mobile browsers**.
-
-**Start by confirming the development server runs, then focus on mobile JavaScript debugging.**
+## Goal
+Get the copyright text perfectly centered on mobile devices only, without affecting desktop layout.

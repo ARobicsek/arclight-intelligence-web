@@ -1,600 +1,184 @@
 import './App.css'
-import { useState, useEffect } from 'react'
 
 function App() {
-  const [showEmailDropdown, setShowEmailDropdown] = useState(false)
-  const [showMobileEmailDropdown, setShowMobileEmailDropdown] = useState(false)
-
-  // Close dropdowns when clicking outside
-  useEffect(() => {
-    const handleClickOutside = () => {
-      setShowEmailDropdown(false)
-      setShowMobileEmailDropdown(false)
-    }
-    
-    if (showEmailDropdown || showMobileEmailDropdown) {
-      document.addEventListener('click', handleClickOutside)
-      return () => document.removeEventListener('click', handleClickOutside)
-    }
-  }, [showEmailDropdown, showMobileEmailDropdown])
-
-  const handleEmailOption = (service: string) => {
-    const email = 'contact@arclightint.com'
-    const subject = 'Inquiry from Website'
-    const body = 'Hello, I would like to inquire about your services.'
-    
-    let url = ''
-    
-    switch (service) {
-      case 'outlook':
-        url = `https://outlook.live.com/mail/0/deeplink/compose?to=${email}&subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
-        break
-      case 'gmail':
-        url = `https://mail.google.com/mail/?view=cm&to=${email}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
-        break
-      case 'yahoo':
-        url = `https://compose.mail.yahoo.com/?to=${email}&subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
-        break
-      case 'copy':
-        navigator.clipboard.writeText(email)
-        alert('Email address copied to clipboard!')
-        return
-      default:
-        // Fallback to mailto for default email client
-        url = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
-    }
-    
-    window.open(url, '_blank', 'noopener,noreferrer')
-    setShowEmailDropdown(false)
-    setShowMobileEmailDropdown(false)
-  }
   return (
-    <div className="min-h-screen" style={{backgroundColor: '#F5F0E8'}}>
+    <div className="min-h-screen bg-[#F5F5F5] text-black font-body texture-grid relative selection:bg-black selection:text-white pb-32">
       {/* Header */}
-      <header className="w-full px-8 lg:px-15" style={{paddingTop: '40px', paddingBottom: '40px'}}>
-        <nav className="flex justify-between items-center max-w-[1440px] mx-auto">
+      <header className="w-full px-6 md:px-8 lg:px-12 py-8 border-b-4 border-black">
+        <nav className="flex justify-between items-center max-w-6xl mx-auto">
           <div className="flex items-center">
-            <img 
-              src="/logo.png" 
-              alt="Arclight Intelligence" 
-              className="h-12 w-auto"
-              style={{
-                width: '96px'
-              }}
-            />
+            {/* The image is a placeholder, since they asked to keep it - but the text logo gives the vibe better in monochrome. Keeping original image per request, but in a structured container */}
+            <div className="font-display font-bold text-2xl tracking-tight uppercase flex items-center gap-4">
+              <img
+                src="/logo.png"
+                alt="Logo Icon"
+                className="h-14 w-auto grayscale"
+              />
+              <span className="hidden sm:inline">Arclight Intelligence</span>
+            </div>
           </div>
-          <div style={{ position: 'relative' }}>
+          <div>
             <button
-              onClick={(e) => {
-                e.stopPropagation()
-                setShowEmailDropdown(!showEmailDropdown)
-              }}
-              className="contact-button hover:opacity-80 transition-opacity duration-300"
-              style={{
-                backgroundColor: '#000000',
-                color: '#F5F0E8',
-                fontWeight: '600', 
-                fontSize: '14px', 
-                letterSpacing: '0.05em',
-                padding: '12px 24px',
-                border: 'none',
-                borderRadius: '4px'
-              }}
+              onClick={() => window.location.href = 'mailto:contact@arclightint.com?subject=Inquiry from Website'}
+              className="hidden md:inline-block bg-black text-white font-mono uppercase tracking-widest text-sm py-4 px-8 border-2 border-black hover:bg-white hover:text-black transition-none focus-visible:outline focus-visible:outline-3 focus-visible:outline-black focus-visible:outline-offset-3"
             >
-              CONTACT ▼
+              Contact
             </button>
-            {showEmailDropdown && (
-              <div 
-                style={{
-                  position: 'absolute',
-                  top: '100%',
-                  right: '0',
-                  backgroundColor: 'white',
-                  border: '1px solid #D4C5B9',
-                  borderRadius: '4px',
-                  boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
-                  zIndex: 1000,
-                  minWidth: '180px',
-                  marginTop: '4px'
-                }}
-              >
-                <button
-                  onClick={() => handleEmailOption('outlook')}
-                  style={{
-                    width: '100%',
-                    padding: '12px 16px',
-                    border: 'none',
-                    background: 'none',
-                    textAlign: 'left',
-                    fontSize: '14px',
-                    cursor: 'pointer',
-                    borderBottom: '1px solid #f0f0f0',
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '10px'
-                  }}
-                  onMouseEnter={(e) => e.target.style.backgroundColor = '#f5f5f5'}
-                  onMouseLeave={(e) => e.target.style.backgroundColor = 'transparent'}
-                >
-                  <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/microsoftoutlook.svg" width="16" height="16" alt="Outlook" style={{filter: 'none'}} />
-                  Outlook
-                </button>
-                <button
-                  onClick={() => handleEmailOption('gmail')}
-                  style={{
-                    width: '100%',
-                    padding: '12px 16px',
-                    border: 'none',
-                    background: 'none',
-                    textAlign: 'left',
-                    fontSize: '14px',
-                    cursor: 'pointer',
-                    borderBottom: '1px solid #f0f0f0',
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '10px'
-                  }}
-                  onMouseEnter={(e) => e.target.style.backgroundColor = '#f5f5f5'}
-                  onMouseLeave={(e) => e.target.style.backgroundColor = 'transparent'}
-                >
-                  <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/gmail.svg" width="16" height="16" alt="Gmail" style={{filter: 'none'}} />
-                  Gmail
-                </button>
-                <button
-                  onClick={() => handleEmailOption('yahoo')}
-                  style={{
-                    width: '100%',
-                    padding: '12px 16px',
-                    border: 'none',
-                    background: 'none',
-                    textAlign: 'left',
-                    fontSize: '14px',
-                    cursor: 'pointer',
-                    borderBottom: '1px solid #f0f0f0',
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '10px'
-                  }}
-                  onMouseEnter={(e) => e.target.style.backgroundColor = '#f5f5f5'}
-                  onMouseLeave={(e) => e.target.style.backgroundColor = 'transparent'}
-                >
-                  <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/yahoo.svg" width="16" height="16" alt="Yahoo" style={{filter: 'none'}} />
-                  Yahoo Mail
-                </button>
-                <button
-                  onClick={() => handleEmailOption('default')}
-                  style={{
-                    width: '100%',
-                    padding: '12px 16px',
-                    border: 'none',
-                    background: 'none',
-                    textAlign: 'left',
-                    fontSize: '14px',
-                    cursor: 'pointer',
-                    borderBottom: '1px solid #f0f0f0',
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '10px'
-                  }}
-                  onMouseEnter={(e) => e.target.style.backgroundColor = '#f5f5f5'}
-                  onMouseLeave={(e) => e.target.style.backgroundColor = 'transparent'}
-                >
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#666" strokeWidth="2">
-                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                    <polyline points="22,6 12,13 2,6"/>
-                  </svg>
-                  Default Email App
-                </button>
-                <button
-                  onClick={() => handleEmailOption('copy')}
-                  style={{
-                    width: '100%',
-                    padding: '12px 16px',
-                    border: 'none',
-                    background: 'none',
-                    textAlign: 'left',
-                    fontSize: '14px',
-                    cursor: 'pointer',
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '10px'
-                  }}
-                  onMouseEnter={(e) => e.target.style.backgroundColor = '#f5f5f5'}
-                  onMouseLeave={(e) => e.target.style.backgroundColor = 'transparent'}
-                >
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#666" strokeWidth="2">
-                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
-                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
-                  </svg>
-                  Copy Email Address
-                </button>
-              </div>
-            )}
           </div>
         </nav>
       </header>
 
       {/* Hero Section */}
-      <section className="py-20 px-8">
-        <div className="max-w-[900px] mx-auto text-center">
-          {/* Desktop Title */}
-          <h1 
-            className="text-black mb-5 leading-tight hero-title hero-title-desktop"
-            style={{
-              fontSize: '50px',
-              fontWeight: '600',
-              letterSpacing: '-0.02em'
-            }}
-          >
-            ILLUMINATE THE PATH FORWARD
+      <section className="py-24 md:py-32 lg:py-40 px-6 md:px-8 lg:px-12 border-b-[8px] border-black relative">
+        <div className="absolute inset-0 texture-grid -z-10"></div>
+        <div className="max-w-6xl mx-auto">
+          <div className="mb-12 flex items-center gap-6 animate-fade-in">
+            <div className="w-4 h-4 bg-black border border-black"></div>
+            <div className="h-1 w-24 bg-black"></div>
+            <span className="font-mono text-sm uppercase tracking-widest text-[#525252]">Bespoke Consulting</span>
+          </div>
+
+          <h1 className="font-display text-6xl md:text-8xl lg:text-9xl tracking-tighter uppercase leading-[0.9] text-black mb-12 max-w-5xl hero-title-desktop animate-fade-in" style={{ animationDelay: '100ms', animationFillMode: 'both' }}>
+            Illuminate<br />The Path<br />Forward.
           </h1>
-          {/* Mobile Title with Line Break */}
-          <h1 
-            className="text-black mb-5 leading-tight hero-title hero-title-mobile"
-            style={{
-              fontSize: '50px',
-              fontWeight: '600',
-              letterSpacing: '-0.02em'
-            }}
-          >
-            ILLUMINATE<br />THE PATH FORWARD
+
+          <h1 className="font-display text-5xl tracking-tighter uppercase leading-[0.95] text-black mb-8 hero-title-mobile animate-fade-in" style={{ animationDelay: '100ms', animationFillMode: 'both' }}>
+            Illuminate<br />The Path<br />Forward.
           </h1>
-          <p 
-            className="mb-10 max-w-3xl mx-auto leading-relaxed hero-subtitle"
-            style={{
-              fontSize: '19px',
-              fontWeight: '400',
-              color: '#444'
-            }}
-          >
-            Bespoke Consulting for Healthcare Innovation
-          </p>
+
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 mt-16 animate-fade-in" style={{ animationDelay: '200ms', animationFillMode: 'both' }}>
+            <div className="lg:col-span-8">
+              <p className="font-body text-xl md:text-2xl text-black leading-relaxed max-w-3xl">
+                We navigate technically and politically complex healthcare ecosystems to deliver actionable innovation strategy, AI infrastructure, and executable implementation models.
+              </p>
+            </div>
+            <div className="lg:col-span-4 flex items-end">
+              <button
+                onClick={() => window.location.href = '#expertise'}
+                className="group bg-transparent text-black font-mono uppercase tracking-widest text-sm flex items-center gap-4 hover:gap-6 border-none hover:underline underline-offset-8 transition-all duration-100 p-0"
+              >
+                Explore Expertise
+                <span className="text-xl leading-none">↓</span>
+              </button>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* Services Section */}
-      <section className="px-8 section-spacing" style={{marginTop: '80px'}}>
-        <div className="max-w-[1100px] mx-auto">
-          <div 
-            style={{
-              display: 'flex',
-              flexDirection: 'row',
-              flexWrap: 'wrap',
-              gap: '2rem'
-            }}
-          >
+      <section id="expertise" className="py-24 md:py-32 lg:py-40 px-6 md:px-8 lg:px-12 border-b-4 border-black border-t-[1px] border-t-black">
+        <div className="max-w-6xl mx-auto">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-24 gap-8">
+            <h2 className="font-display text-5xl md:text-6xl uppercase tracking-tighter">Areas of<br />Expertise.</h2>
+            <p className="font-mono text-sm uppercase tracking-widest text-[#525252] max-w-sm">Strategic advisory backed by 20+ years of clinical and operational leadership.</p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-0 border-t border-l border-black expertise-grid">
+
             {/* Startup Strategy */}
-            <div 
-              className="text-center hover:shadow-lg transition-shadow duration-300 expertise-card" 
-              style={{
-                border: '1px solid #D4C5B9',
-                borderRadius: '8px',
-                padding: '40px 30px',
-                minHeight: '220px',
-                backgroundColor: 'transparent',
-                flex: '1',
-                minWidth: '300px'
-              }}
-            >
-              <div className="w-15 h-15 mx-auto mb-6 flex items-center justify-center">
-                <img src="/match.png" alt="Startup Strategy" style={{width: '120px', height: '120px'}} />
+            <div className="group border-r border-b border-black p-8 md:p-12 bg-white hover:bg-black hover:text-white transition-colors duration-100 flex flex-col h-full expertise-card">
+              <div className="mb-12 border-2 border-black w-20 h-20 md:w-24 md:h-24 flex items-center justify-center bg-white group-hover:border-white transition-colors duration-100">
+                <img src="/match.png" alt="Startup Strategy" className="w-16 h-16 md:w-20 md:h-20 grayscale object-contain" />
               </div>
-              <h3 
-                className="text-black mb-3"
-                style={{
-                  fontSize: '16px',
-                  fontWeight: '700',
-                  margin: '20px 0 10px'
-                }}
-              >
-                STARTUP STRATEGY
-              </h3>
-              <p 
-                className="leading-relaxed"
-                style={{
-                  fontSize: '14px',
-                  lineHeight: '1.6',
-                  color: '#666'
-                }}
-              >
-                We help healthtech startups navigate technically and politically complex healthcare ecosystems, RFP processes, and enterprise sales cycles. We have extensive inside knowledge of these human and technological ecosystems, and can help you figure out how to get them to work for you.
+              <h3 className="font-display text-3xl mb-6 uppercase tracking-tight">Startup Strategy</h3>
+              <p className="font-body text-base md:text-lg leading-relaxed text-[#525252] group-hover:text-[#E5E5E5] transition-colors duration-100 flex-grow">
+                Navigate healthcare ecosystems, RFP processes, and enterprise sales cycles. We leverage inside knowledge of human and technological networks to position your solution securely.
               </p>
             </div>
 
-            {/* PE/VC Advisory */}
-            <div 
-              className="text-center hover:shadow-lg transition-shadow duration-300 expertise-card" 
-              style={{
-                border: '1px solid #D4C5B9',
-                borderRadius: '8px',
-                padding: '40px 30px',
-                minHeight: '220px',
-                backgroundColor: 'transparent',
-                flex: '1',
-                minWidth: '300px'
-              }}
-            >
-              <div className="w-15 h-15 mx-auto mb-6 flex items-center justify-center">
-                <img src="/torch.png" alt="PE/VC Advisory" style={{width: '120px', height: '120px'}} />
+            {/* PE / VC Advisory */}
+            <div className="group border-r border-b border-black p-8 md:p-12 bg-white hover:bg-black hover:text-white transition-colors duration-100 flex flex-col h-full expertise-card">
+              <div className="mb-12 border-2 border-black w-20 h-20 md:w-24 md:h-24 flex items-center justify-center bg-white group-hover:border-white transition-colors duration-100">
+                <img src="/torch.png" alt="PE/VC Advisory" className="w-16 h-16 md:w-20 md:h-20 grayscale object-contain" />
               </div>
-              <h3 
-                className="text-black mb-3"
-                style={{
-                  fontSize: '16px',
-                  fontWeight: '700',
-                  margin: '20px 0 10px'
-                }}
-              >
-                PE & VC ADVISORY
-              </h3>
-              <p 
-                className="leading-relaxed"
-                style={{
-                  fontSize: '14px',
-                  lineHeight: '1.6',
-                  color: '#666'
-                }}
-              >
-                We provide deep operational insights, due diligence expertise, and strategic assessment of healthcare technology companies, leveraging 20+ years of experience leading analytics, informatics and innovation at large and mid-sized healthsystems. We've seen it all, and we know what works in real life.
+              <h3 className="font-display text-3xl mb-6 uppercase tracking-tight">PE & VC Advisory</h3>
+              <p className="font-body text-base md:text-lg leading-relaxed text-[#525252] group-hover:text-[#E5E5E5] transition-colors duration-100 flex-grow">
+                Deep operational insights and due diligence expertise tailored for healthcare tech. Real-world assessments derived from decades of steering informatics networks.
               </p>
             </div>
 
             {/* Healthcare Data & AI */}
-            <div 
-              className="text-center hover:shadow-lg transition-shadow duration-300 expertise-card" 
-              style={{
-                border: '1px solid #D4C5B9',
-                borderRadius: '8px',
-                padding: '40px 30px',
-                minHeight: '220px',
-                backgroundColor: 'transparent',
-                flex: '1',
-                minWidth: '300px'
-              }}
-            >
-              <div className="w-15 h-15 mx-auto mb-6 flex items-center justify-center">
-                <img src="/fluro_bulb.png" alt="Healthcare AI/Data" style={{width: '120px', height: '120px'}} />
+            <div className="group border-r border-b border-black p-8 md:p-12 bg-white hover:bg-black hover:text-white transition-colors duration-100 flex flex-col h-full expertise-card">
+              <div className="mb-12 border-2 border-black w-20 h-20 md:w-24 md:h-24 flex items-center justify-center bg-white group-hover:border-white transition-colors duration-100">
+                <img src="/fluro_bulb.png" alt="Healthcare AI/Data" className="w-16 h-16 md:w-20 md:h-20 grayscale object-contain" />
               </div>
-              <h3 
-                className="text-black mb-3"
-                style={{
-                  fontSize: '16px',
-                  fontWeight: '700',
-                  margin: '20px 0 10px'
-                }}
-              >
-                HEALTHCARE AI & DATA
-              </h3>
-              <p 
-                className="leading-relaxed"
-                style={{
-                  fontSize: '14px',
-                  lineHeight: '1.6',
-                  color: '#666'
-                }}
-              >
-                We guide healthcare organizations through AI adoption, analytics transformation, and data strategy development—from building centers of excellence to deploying production-ready ML models. We see past the fluff and know how to make analytics and AI actually further your strategy.
+              <h3 className="font-display text-3xl mb-6 uppercase tracking-tight">Healthcare Data & AI</h3>
+              <p className="font-body text-base md:text-lg leading-relaxed text-[#525252] group-hover:text-[#E5E5E5] transition-colors duration-100 flex-grow">
+                Guide organizations through AI adoption and data strategy. From center of excellence creation to production ML deployments, separating hype from strategic capability.
               </p>
             </div>
+
           </div>
         </div>
       </section>
 
       {/* About Section */}
-      <section className="px-8 section-spacing" style={{marginTop: '80px'}}>
-        <div className="max-w-[1440px] mx-auto">
-          <div className="flex items-start gap-8 w-full px-8 about-container">
-            <div className="flex-shrink-0">
-              <img src="/lighthouse.png" alt="About Us" style={{width: '120px', height: '120px'}} />
+      <section className="py-24 md:py-32 lg:py-40 px-6 md:px-8 lg:px-12 border-b-8 border-black bg-black text-white relative overflow-hidden">
+        <div className="absolute inset-0 texture-inverted-lines opacity-20"></div>
+        <div className="max-w-6xl mx-auto relative z-10">
+          <div className="flex flex-col lg:flex-row gap-16 lg:gap-32 about-container">
+            <div className="lg:w-1/3 flex flex-col gap-12">
+              <h2 className="font-display text-5xl md:text-6xl uppercase tracking-tighter">About Us.</h2>
+              <div className="p-8 border-2 border-white bg-black">
+                <img src="/lighthouse.png" alt="About Us" className="w-24 h-24 mb-6 grayscale invert" />
+                <p className="font-mono text-sm tracking-widest uppercase leading-loose">Clarity in<br />healthcare's<br />most complex<br />challenges.</p>
+              </div>
             </div>
-            <div className="flex-1">
-              <h2 
-                className="text-black mb-5"
-                style={{
-                  fontSize: '24px',
-                  fontWeight: '700',
-                  margin: '0 0 20px 0'
-                }}
-              >
-                ABOUT US
-              </h2>
-              <p 
-                className="leading-relaxed"
-                style={{
-                  fontSize: '14px',
-                  lineHeight: '1.7',
-                  color: '#666'
-                }}
-              >
-                Arclight Intelligence brings clarity to healthcare's most complex challenges. We're founded by <a href="https://www.linkedin.com/in/ari-robicsek-a408bba2/" target="_blank" rel="noopener noreferrer" style={{color: '#666', textDecoration: 'underline'}}>Dr. Ari Robicsek</a>, a physician-healthcare executive who has led both analytics and research operations at healthcare organizations of different sizes, including one of America's largest providers. His experience includes building high-performing analytics teams, securing tens of millions in research funding for innovation projects and generating tens of millions in operational savings through practical deployment of analytics and AI. He has published in Nature and JAMA, built products used by thousands of clinicians and innovated some of the earliest forms of ML-based clinical decision support.
-<br />At Arclight Intelligence we understand the challenging journey from an exciting idea to a product that has measurable impact in the healthcare environment. We've been there: at the bedside, in the boardroom and in the back offices with the IT professionals; we know what fails and what works. And we can help you see your path forward.
 
+            <div className="lg:w-2/3">
+              <p className="font-body text-xl md:text-2xl leading-relaxed mb-8">
+                Arclight Intelligence brings clarity to healthcare's most complex challenges. We're founded by <a href="https://www.linkedin.com/in/ari-robicsek-a408bba2/" target="_blank" rel="noopener noreferrer" className="underline underline-offset-4 hover:border-b-4 hover:border-white transition-all">Dr. Ari Robicsek</a>, a physician-executive who has led data, analytics and research operations at healthcare organizations of different sizes, including one of America's largest providers. His experience includes building innovation and product teams, high-performing analytics groups, and research centers. His work has demonstrated how technology can catalyze large-scale clinical improvements and operational savings. He has published in <em>Nature</em> and <em>JAMA</em>, built products used by thousands of clinicians and innovated some of the earliest forms of ML-based clinical decision support.
               </p>
+              <p className="font-body text-xl md:text-2xl leading-relaxed mb-8 text-gray-300">
+                At Arclight Intelligence we understand the challenging journey from an exciting idea to a product that people will use, love, and pay for. We've been there: at the bedside, in the boardroom and in the back offices with the IT professionals; we know what fails and what works.
+              </p>
+              <p className="font-body text-xl md:text-2xl leading-relaxed text-gray-400">
+                And we can help you see your path forward.
+              </p>
+
+              <div className="mt-16 pt-8 border-t border-white inline-block">
+                <button
+                  onClick={() => window.location.href = 'mailto:contact@arclightint.com?subject=Inquiry from Website'}
+                  className="bg-white text-black font-mono uppercase tracking-widest text-sm py-5 px-10 border-2 border-white hover:bg-black hover:text-white transition-none focus-visible:outline focus-visible:outline-3 focus-visible:outline-white focus-visible:outline-offset-3"
+                >
+                  Get In Touch
+                </button>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Mobile Contact Button */}
-      <div className="px-8">
-        <div className="max-w-[1440px] mx-auto" style={{ position: 'relative' }}>
-          <button
-            onClick={(e) => {
-              e.stopPropagation()
-              setShowMobileEmailDropdown(!showMobileEmailDropdown)
-            }}
-            className="mobile-contact-button hover:opacity-80 transition-opacity duration-300"
-            style={{
-              backgroundColor: '#000000',
-              color: '#F5F0E8',
-              fontWeight: '600', 
-              fontSize: '14px', 
-              letterSpacing: '0.05em',
-              padding: '12px 24px',
-              border: 'none',
-              borderRadius: '4px'
-            }}
-          >
-            CONTACT ▼
-          </button>
-          {showMobileEmailDropdown && (
-            <div 
-              style={{
-                position: 'absolute',
-                top: '100%',
-                left: '0',
-                backgroundColor: 'white',
-                border: '1px solid #D4C5B9',
-                borderRadius: '4px',
-                boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
-                zIndex: 1000,
-                minWidth: '200px',
-                marginTop: '4px'
-              }}
-            >
-              <button
-                onClick={() => handleEmailOption('outlook')}
-                style={{
-                  width: '100%',
-                  padding: '12px 16px',
-                  border: 'none',
-                  background: 'none',
-                  textAlign: 'left',
-                  fontSize: '14px',
-                  cursor: 'pointer',
-                  borderBottom: '1px solid #f0f0f0',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '10px'
-                }}
-                onMouseEnter={(e) => e.target.style.backgroundColor = '#f5f5f5'}
-                onMouseLeave={(e) => e.target.style.backgroundColor = 'transparent'}
-              >
-                <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/microsoftoutlook.svg" width="16" height="16" alt="Outlook" style={{filter: 'none'}} />
-                Outlook
-              </button>
-              <button
-                onClick={() => handleEmailOption('gmail')}
-                style={{
-                  width: '100%',
-                  padding: '12px 16px',
-                  border: 'none',
-                  background: 'none',
-                  textAlign: 'left',
-                  fontSize: '14px',
-                  cursor: 'pointer',
-                  borderBottom: '1px solid #f0f0f0',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '10px'
-                }}
-                onMouseEnter={(e) => e.target.style.backgroundColor = '#f5f5f5'}
-                onMouseLeave={(e) => e.target.style.backgroundColor = 'transparent'}
-              >
-                <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/gmail.svg" width="16" height="16" alt="Gmail" style={{filter: 'none'}} />
-                Gmail
-              </button>
-              <button
-                onClick={() => handleEmailOption('yahoo')}
-                style={{
-                  width: '100%',
-                  padding: '12px 16px',
-                  border: 'none',
-                  background: 'none',
-                  textAlign: 'left',
-                  fontSize: '14px',
-                  cursor: 'pointer',
-                  borderBottom: '1px solid #f0f0f0',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '10px'
-                }}
-                onMouseEnter={(e) => e.target.style.backgroundColor = '#f5f5f5'}
-                onMouseLeave={(e) => e.target.style.backgroundColor = 'transparent'}
-              >
-                <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/yahoo.svg" width="16" height="16" alt="Yahoo" style={{filter: 'none'}} />
-                Yahoo Mail
-              </button>
-              <button
-                onClick={() => handleEmailOption('default')}
-                style={{
-                  width: '100%',
-                  padding: '12px 16px',
-                  border: 'none',
-                  background: 'none',
-                  textAlign: 'left',
-                  fontSize: '14px',
-                  cursor: 'pointer',
-                  borderBottom: '1px solid #f0f0f0',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '10px'
-                }}
-                onMouseEnter={(e) => e.target.style.backgroundColor = '#f5f5f5'}
-                onMouseLeave={(e) => e.target.style.backgroundColor = 'transparent'}
-              >
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#666" strokeWidth="2">
-                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                  <polyline points="22,6 12,13 2,6"/>
-                </svg>
-                Default Email App
-              </button>
-              <button
-                onClick={() => handleEmailOption('copy')}
-                style={{
-                  width: '100%',
-                  padding: '12px 16px',
-                  border: 'none',
-                  background: 'none',
-                  textAlign: 'left',
-                  fontSize: '14px',
-                  cursor: 'pointer',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '10px'
-                }}
-                onMouseEnter={(e) => e.target.style.backgroundColor = '#f5f5f5'}
-                onMouseLeave={(e) => e.target.style.backgroundColor = 'transparent'}
-              >
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#666" strokeWidth="2">
-                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
-                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
-                </svg>
-                Copy Email Address
-              </button>
-            </div>
-          )}
-        </div>
-      </div>
-
       {/* Footer */}
-      <footer 
-        className="w-full px-8 lg:px-15" 
-        style={{
-          marginTop: '100px',
-          padding: '40px 60px'
-        }}
-      >
-        <div className="flex justify-between items-end max-w-[1440px] mx-auto footer-container">
-          <div className="flex flex-col copyright-container" style={{paddingLeft: '8px'}}>
-            <p 
-              style={{
-                fontSize: '12px',
-                color: '#666'
-              }}
-            >
-              © {new Date().getFullYear()} Arclight Intelligence. All rights reserved.
+      <footer className="w-full px-6 md:px-8 lg:px-12 py-16 bg-white border-t border-black">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-end max-w-6xl mx-auto footer-container gap-8 md:gap-0">
+
+          <div className="flex flex-col gap-4">
+            <div className="font-display font-bold text-xl tracking-tight uppercase flex items-center gap-3">
+              <img
+                src="/logo.png"
+                alt="Logo Icon"
+                className="h-8 w-auto grayscale"
+              />
+              <span>Arclight Intelligence</span>
+            </div>
+            <p className="font-mono text-xs uppercase tracking-widest text-[#525252]">
+              © {new Date().getFullYear()} Arclight Intelligence, LLC.
             </p>
           </div>
-          <div className="flex space-x-5 footer-social">
-            <a href="#" className="text-black hover:text-gray-600 transition-colors duration-300">
-              <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+
+          <div className="flex space-x-6 footer-social items-center">
+            <span className="font-mono text-xs uppercase tracking-widest mr-4 hidden md:inline-block">Connect</span>
+            <div className="w-8 border-t border-black hidden md:block mr-2"></div>
+            {/* Placeholder links for social, adapt as needed */}
+            <a href="#" className="border rounded-none p-3 border-transparent hover:border-black text-black transition-colors focus-visible:outline focus-visible:outline-3 focus-visible:outline-black focus-visible:outline-offset-3" aria-label="LinkedIn">
+              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
               </svg>
             </a>
-            <a href="#" className="text-black hover:text-gray-600 transition-colors duration-300">
-              <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+            <a href="#" className="border rounded-none p-3 border-transparent hover:border-black text-black transition-colors focus-visible:outline focus-visible:outline-3 focus-visible:outline-black focus-visible:outline-offset-3" aria-label="Twitter">
+              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z" />
               </svg>
             </a>
           </div>
