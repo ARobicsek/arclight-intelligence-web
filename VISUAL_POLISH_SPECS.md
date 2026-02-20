@@ -107,9 +107,7 @@ Based on the provided mockup and design requirements, this document outlines the
   - Logo: Same as header, approximately 140px width
   - Copyright: "© 2024 Arclight Intelligence. All rights reserved." (font-size: 12px, color: `#666`)
 - **Right Side**:
-  - Social icons: LinkedIn and Twitter (24x24px each)
-  - Horizontal spacing: 20px
-  - Align to bottom of footer
+  - Empty (Social icons removed per user request)
 
 ## Responsive Design
 
@@ -141,9 +139,8 @@ Based on the provided mockup and design requirements, this document outlines the
 - `/public/briefcase.svg` - PE/VC Advisory
 - `/public/chart.svg` - Startup Strategy  
 - `/public/gears.svg` - Healthcare AI/Data
-- LinkedIn icon (24x24px)
-- Twitter icon (24x24px)
 - Circular decorative element for About section
+- (Social icons removed)
 
 ### Logo Usage
 - Header: `/public/logo.png` at 160px width

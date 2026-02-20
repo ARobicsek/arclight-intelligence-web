@@ -60,7 +60,7 @@ Based on the homepage mockup, the site features:
   - STARTUP STRATEGY (chart icon) 
   - HEALTHCARE AI/DATA (gear icon)
 - **About Section**: "ABOUT US" with placeholder text and circular icon
-- **Footer**: Logo, copyright "© 2024 Arclight Intelligence. All your input." and social icons (LinkedIn, Twitter)
+- **Footer**: Logo and copyright "© 2026 Arclight Intelligence, LLC." (social icons removed)
 
 **Design Style**: Elegant, minimal, professional with lots of white space and clean typography.
 
@@ -83,5 +83,8 @@ Based on the homepage mockup, the site features:
     *   Resultant `dist` folder contents should be uploaded directly to the `public_html` directory of the Namecheap cPanel hosting for `arclightint.com`.
 
 **Next Session Planning**:
-- Await user tweaks to the current layout.
+- Await further user tweaks to the current layout.
 - Potential mobile breakpoint adjustments if copy/icons need to be tweaked for specific devices. 
+
+**User Tweaks Implemented**:
+- Removed the CONNECT text and LinkedIn/Twitter social icons from the footer.
