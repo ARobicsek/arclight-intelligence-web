@@ -63,3 +63,25 @@ Based on the homepage mockup, the site features:
 - **Footer**: Logo, copyright "© 2024 Arclight Intelligence. All your input." and social icons (LinkedIn, Twitter)
 
 **Design Style**: Elegant, minimal, professional with lots of white space and clean typography.
+
+---
+
+## Session Notes: Feb 19, 2026
+**Minimalist Monochrome Redesign Implementation**
+
+1.  **Global Styling (`index.css` & `App.css`)**:
+    *   Replaced previous styling with a strict `#000000` and `#FFFFFF` (with `#F5F5F5` off-white backgrounds) monochrome palette.
+    *   Removed all rounded corners (strict `0px` border-radius) and soft shadows.
+    *   Added standard Google Fonts: *Playfair Display* (Headings), *Source Serif 4* (Body), *JetBrains Mono* (Accents).
+2.  **Structural Components (`App.tsx`)**:
+    *   **Hero**: Updated to use a large, high-impact `Playfair Display` typography ("ILLUMINATE THE PATH FORWARD") and implemented the `texture-grid` background.
+    *   **Expertise Section**: Converted cards to use black borders, sharp corners, and instant "color-inversion" hover states (white-on-black). Scaled the expertise icons (Match/Torch/Bulb) up by ~30-40% (`w-16 h-16` / `w-20 h-20`).
+    *   **About Us**: Updated text to accurately reflect Dr. Ari Robicsek's background and Arclight Intelligence's mission.
+    *   **Logo**: Updated sizing to `h-14` (approx 56px) for better visibility.
+3.  **Deployment Prep**:
+    *   Project is ready to be built (`npm run build`).
+    *   Resultant `dist` folder contents should be uploaded directly to the `public_html` directory of the Namecheap cPanel hosting for `arclightint.com`.
+
+**Next Session Planning**:
+- Await user tweaks to the current layout.
+- Potential mobile breakpoint adjustments if copy/icons need to be tweaked for specific devices. 
